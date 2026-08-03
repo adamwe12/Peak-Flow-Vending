@@ -1,0 +1,30 @@
+# Peak Flow Vending LLC — Website
+
+A single-file static website (`index.html` + an `assets/` folder of images). No build step, no backend, no dependencies to install.
+
+## Preview it locally
+Just double-click `index.html`, or run a tiny local server from this folder:
+```
+python3 -m http.server 8000
+```
+then open http://localhost:8000
+
+## Add your real photo
+Open `index.html`, find the `<div class="owner-photo">` block in the About section — it currently holds an original illustrated portrait (hand-built SVG, not a photo of a real person). Delete the `<svg class="owner-illustration">...</svg>` element and replace it with:
+```html
+<img class="owner-illustration" src="assets/owner.jpg" alt="Owner of Peak Flow Vending" style="width:100%;height:100%;object-fit:cover;">
+```
+Then drop your photo into `assets/owner.jpg`.
+
+## Deploy for free with GitHub Pages
+1. Create a new GitHub repo (e.g. `peak-flow-vending`).
+2. Upload everything in this folder (`index.html` and the `assets/` folder) to the repo — keep the folder structure exactly as-is.
+3. In the repo: **Settings → Pages → Source → Deploy from branch → main / (root)** → Save.
+4. GitHub gives you a live URL in a minute or two, e.g. `https://yourusername.github.io/peak-flow-vending/`.
+5. Optional: point your own domain at it under Settings → Pages → Custom domain.
+
+## Editing content
+Everything — text, phone number, email, machine descriptions, the location list — lives in plain view inside `index.html`. Search for the text you want to change and edit it directly; no templating system to fight.
+
+## The contact form
+The "Request a machine" form uses a `mailto:` action, so submitting it opens the visitor's email app pre-addressed to support@peakflow.com. That works with zero setup, but it depends on the visitor having a mail client configured. If you want submissions to land in an inbox without that dependency, swap the form's `action` for a free service like Formspree (formspree.io) — takes about 5 minutes.
