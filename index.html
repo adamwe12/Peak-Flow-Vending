@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peak Flow Vending LLC — Local Vending Machines, Installed Free</title>
+<meta name="description" content="Peak Flow Vending LLC brings free, fully-stocked vending machines to businesses across Ogden and Weber County. Locally owned and operated. Call (773) 677-0284."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cloud:#F5F2FB;
+    --paper:#FFFFFF;
+    --ink:#1B1730;
+    --ink-soft:#4A4460;
+    --line:#E4DEF3;
+    --pink:#FF3D7F;
+    --orange:#FF8A3D;
+    --teal:#0FB89B;
+    --gradient: linear-gradient(90deg, var(--pink) 0%, var(--orange) 52%, var(--teal) 100%);
+    --radius: 22px;
+    --shadow: 0 20px 50px -25px rgba(27,23,48,0.35);
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cloud);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Bricolage Grotesque', sans-serif;
+    margin:0;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--pink);
+  }
+  .eyebrow.on-dark{ color:#FFB199; }
+
+  section{ padding:96px 0; }
+  @media (max-width:720px){ section{ padding:64px 0; } }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 26px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:15px;
+    border:none;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:#fff;
+    box-shadow:0 12px 30px -12px rgba(27,23,48,0.55);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 16px 34px -12px rgba(27,23,48,0.6); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1.5px solid var(--line);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover{ border-color:var(--ink); }
+  .btn-ghost.on-dark{ color:#fff; border-color:rgba(255,255,255,0.3); }
+  .btn-ghost.on-dark:hover{ border-color:#fff; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,242,251,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .logo{ display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px; }
+  .logo .mark{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--gradient);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .logo .mark svg{ width:18px; height:18px; }
+  .logo small{
+    display:block; font-family:'IBM Plex Mono', monospace;
+    font-size:9.5px; letter-spacing:0.18em; font-weight:600;
+    color:var(--ink-soft); margin-top:1px;
+  }
+  .nav-links{ display:flex; align-items:center; gap:34px; }
+  .nav-links a{ font-size:14.5px; font-weight:600; color:var(--ink-soft); }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .nav-phone{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:14px; display:none; }
+  .burger{ display:none; background:none; border:none; padding:6px; cursor:pointer; }
+  .burger span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
+
+  @media (min-width:860px){ .nav-phone{ display:inline; } }
+  @media (max-width:900px){
+    .nav-links{
+      position:fixed; inset:64px 0 auto 0; background:var(--paper);
+      flex-direction:column; align-items:flex-start; gap:0;
+      padding:8px 28px 20px; border-bottom:1px solid var(--line);
+      transform:translateY(-130%); transition:transform .35s ease;
+    }
+    .nav-links.open{ transform:translateY(0); }
+    .nav-links a{ width:100%; padding:14px 0; border-bottom:1px solid var(--line); }
+    .burger{ display:block; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--ink);
+    color:#fff;
+    position:relative;
+    padding:88px 0 40px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(560px 380px at 82% -8%, rgba(255,61,127,0.35), transparent 60%),
+      radial-gradient(520px 420px at 8% 110%, rgba(15,184,155,0.30), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-range{
+    position:absolute; left:0; right:0; bottom:0; width:100%; height:auto;
+    opacity:0.9; pointer-events:none;
+  }
+  .hero-range .peak-back{ fill:#241F3D; }
+  .hero-range .peak-mid{ fill:#2C2650; }
+  .hero-range .peak-front{ fill:#1B1730; }
+  .hero-range .snowcap{ fill:rgba(255,255,255,0.55); }
+  .hero-inner{ position:relative; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+  @media (max-width:940px){ .hero-inner{ grid-template-columns:1fr; gap:40px; } }
+
+  .hero h1{ font-size:clamp(38px,5.4vw,62px); font-weight:800; margin-top:16px; }
+  .hero h1 .grad{
+    background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lede{
+    margin-top:20px; font-size:17.5px; line-height:1.6; color:#D9D5EC; max-width:480px;
+  }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
+  .hero-trust{ display:flex; flex-wrap:wrap; gap:22px; margin-top:44px; }
+  .hero-trust div{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#B9B3D6; display:flex; align-items:center; gap:8px; }
+  .hero-trust div::before{ content:"✓"; color:var(--teal); font-weight:700; }
+
+  /* Flow line graphic */
+  .flow-graphic{ position:relative; }
+  .flow-svg{ width:100%; height:auto; overflow:visible; }
+  .flow-path{
+    fill:none; stroke:url(#flowGrad); stroke-width:3; stroke-linecap:round;
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2.2s ease forwards .3s;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .flow-stop{ opacity:0; animation:pop .5s ease forwards; }
+  .flow-stop:nth-of-type(1){ animation-delay:.7s; }
+  .flow-stop:nth-of-type(2){ animation-delay:1.15s; }
+  .flow-stop:nth-of-type(3){ animation-delay:1.6s; }
+  .flow-stop:nth-of-type(4){ animation-delay:2.05s; }
+  @keyframes pop{ from{ opacity:0; transform:scale(.6); } to{ opacity:1; transform:scale(1); } }
+  .flow-label{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; fill:#C7C1E4; letter-spacing:.04em;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .flow-path{ animation:none; stroke-dashoffset:0; }
+    .flow-stop{ animation:none; opacity:1; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- Section headers ---------- */
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(28px,3.6vw,40px); margin-top:14px; }
+  .section-head p{ margin-top:16px; font-size:16px; color:var(--ink-soft); line-height:1.6; }
+  .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+
+  /* ---------- Owner / About ---------- */
+  .about{ background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{ display:grid; grid-template-columns:280px 1fr; gap:52px; align-items:center; }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+
+  .owner-card{
+    position:relative; border-radius:28px; padding:8px;
+    background:var(--gradient);
+  }
+  .owner-photo{
+    position:relative; border-radius:22px; overflow:hidden;
+    aspect-ratio:4/5; background:var(--cloud);
+  }
+  .owner-illustration{ width:100%; height:100%; display:block; }
+  .owner-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:18px 20px 16px;
+    background:linear-gradient(0deg, rgba(27,23,48,0.88) 0%, rgba(27,23,48,0) 100%);
+    color:#fff;
+  }
+  .owner-caption strong{ display:block; font-size:15px; font-family:'Bricolage Grotesque',sans-serif; }
+  .owner-caption span{ font-size:11px; color:#D9D5EC; font-family:'IBM Plex Mono',monospace; letter-spacing:.05em; text-transform:uppercase; }
+  .owner-note{ margin-top:14px; font-size:12px; color:var(--ink-soft); line-height:1.5; text-align:center; }
+
+  .about-copy h3{ font-size:26px; margin-bottom:6px; }
+  .about-copy .role{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--pink); font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .about-copy p{ margin-top:18px; font-size:16px; line-height:1.75; color:var(--ink-soft); }
+  .about-copy p + p{ margin-top:14px; }
+  .about-sign{ margin-top:22px; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:17px; }
+  .about-sign span{ display:block; font-family:'Manrope',sans-serif; font-weight:500; font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* ---------- Machines ---------- */
+  .machine-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  @media (max-width:940px){ .machine-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:620px){ .machine-grid{ grid-template-columns:1fr; } }
+
+  .machine-card{
+    background:var(--paper); border-radius:var(--radius); overflow:hidden;
+    border:1px solid var(--line); box-shadow:var(--shadow);
+    display:flex; flex-direction:column;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .machine-card:hover{ transform:translateY(-6px); }
+  .machine-card .shot{ aspect-ratio:4/3.1; overflow:hidden; background:#EFEAFB; }
+  .machine-card .shot img{ width:100%; height:100%; object-fit:cover; }
+  .machine-card .body{ padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .machine-tag{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); font-weight:600; }
+  .machine-card h4{ font-size:19px; }
+  .machine-card p{ font-size:14.5px; color:var(--ink-soft); line-height:1.55; flex:1; }
+  .machine-card .best-for{ font-size:12.5px; font-weight:600; color:var(--ink); padding-top:8px; border-top:1px dashed var(--line); }
+  .machine-card.wide{ grid-column:span 1; }
+
+  /* ---------- Locations ---------- */
+  .locations{ background:var(--ink); color:#fff; position:relative; overflow:hidden; }
+  .locations::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(500px 340px at 90% 10%, rgba(255,138,61,0.22), transparent 60%);
+    pointer-events:none;
+  }
+  .loc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); overflow:hidden; position:relative; }
+  @media (max-width:860px){ .loc-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .loc-grid{ grid-template-columns:1fr; } }
+  .loc-item{ background:#241F3D; padding:26px 24px; display:flex; flex-direction:column; gap:8px; }
+  .loc-item .ic{ font-size:22px; }
+  .loc-item h5{ font-family:'Bricolage Grotesque',sans-serif; font-size:16.5px; font-weight:700; }
+  .loc-item p{ font-size:13.5px; color:#BDB6DA; line-height:1.5; }
+
+  /* ---------- How it works ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; counter-reset:step; }
+  @media (max-width:900px){ .steps{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .steps{ grid-template-columns:1fr; } }
+  .step{ position:relative; padding-top:8px; }
+  .step .num{
+    font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:13px;
+    background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .step h4{ font-size:17.5px; margin-top:10px; }
+  .step p{ font-size:14px; color:var(--ink-soft); margin-top:8px; line-height:1.55; }
+
+  /* ---------- CTA / Contact ---------- */
+  .contact{ background:var(--paper); border-top:1px solid var(--line); }
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-info h2{ font-size:clamp(28px,3.6vw,38px); }
+  .contact-info p.lede{ margin-top:16px; font-size:16px; color:var(--ink-soft); line-height:1.65; max-width:420px; }
+  .contact-cards{ margin-top:30px; display:flex; flex-direction:column; gap:14px; }
+  .ccard{
+    display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:16px;
+    border:1px solid var(--line); background:var(--cloud);
+  }
+  .ccard .ic{
+    width:42px; height:42px; border-radius:12px; background:var(--ink); color:#fff;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:18px;
+  }
+  .ccard strong{ display:block; font-size:15px; }
+  .ccard span{ font-size:13.5px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; }
+
+  form{ background:var(--ink); color:#fff; border-radius:var(--radius); padding:32px; box-shadow:var(--shadow); }
+  form h3{ font-size:20px; margin-bottom:4px; }
+  form > p{ font-size:13.5px; color:#BDB6DA; margin-bottom:22px; }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-size:12.5px; font-weight:600; margin-bottom:7px; color:#D9D5EC; }
+  .field input, .field select, .field textarea{
+    width:100%; padding:12px 14px; border-radius:11px; border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.06); color:#fff; font-family:'Manrope',sans-serif; font-size:14.5px;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:#8D86AD; }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .field select{ appearance:none; }
+  form .btn-primary{ width:100%; justify-content:center; background:var(--gradient); margin-top:6px; }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--ink); color:#B9B3D6; padding:0 0 28px; }
+  .foot-range{ display:block; width:100%; height:auto; }
+  .foot-inner{ padding-top:40px; border-top:1px solid rgba(255,255,255,0.08); }
+  .foot-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px; padding-bottom:28px; }
+  .foot-links{ display:flex; gap:36px; flex-wrap:wrap; }
+  .foot-links a{ font-size:13.5px; color:#B9B3D6; }
+  .foot-links a:hover{ color:#fff; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; }
+
+  /* Reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; } }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:2.5px solid var(--pink); outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 17L9 9L13 14L21 4" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>PEAK FLOW<small>VENDING&nbsp;LLC</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#machines">Machines</a></li>
+      <li><a href="#locations">Who We Serve</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+17736770284">(773) 677-0284</a>
+      <a class="btn btn-primary" href="#contact">Get a Free Machine</a>
+      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-range" viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="peak-back" d="M0 220 L0 140 L90 90 L170 130 L260 60 L340 110 L430 45 L520 100 L610 70 L700 130 L790 55 L880 120 L970 80 L1060 140 L1150 90 L1240 150 L1330 100 L1440 150 L1440 220 Z"/>
+      <path class="peak-mid" d="M0 220 L0 175 L120 110 L210 165 L300 100 L400 160 L500 95 L590 155 L690 115 L780 170 L880 100 L980 165 L1080 120 L1180 175 L1280 130 L1380 170 L1440 150 L1440 220 Z"/>
+      <path class="peak-front" d="M0 220 L0 205 L150 150 L260 195 L370 145 L470 200 L580 155 L680 205 L790 160 L900 210 L1010 165 L1110 205 L1220 170 L1330 210 L1440 190 L1440 220 Z"/>
+      <g class="snowcap">
+        <path d="M150 150 L163 168 L150 174 L137 168 Z"/>
+        <path d="M370 145 L385 165 L370 172 L355 165 Z"/>
+        <path d="M790 160 L805 180 L790 187 L775 180 Z"/>
+        <path d="M1220 170 L1234 189 L1220 196 L1206 189 Z"/>
+      </g>
+    </svg>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow on-dark">Locally Owned &amp; Operated — Ogden, Weber County</span>
+        <h1>Vending that keeps your <span class="grad">flow</span> going, at zero cost to host.</h1>
+        <p class="lede">Peak Flow Vending places, stocks, and services modern vending machines — from soft serve to hot food to grab-and-go — at businesses across the area. You get happier people on-site. We handle everything else.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Request a Machine</a>
+          <a class="btn btn-ghost on-dark" href="tel:+17736770284">Call (773) 677-0284</a>
+        </div>
+        <div class="hero-trust">
+          <div>Serving Ogden &amp; Weber County</div>
+          <div>Free installation</div>
+          <div>No cost to host</div>
+          <div>Full-service restocking</div>
+        </div>
+      </div>
+
+      <div class="flow-graphic">
+        <svg class="flow-svg" viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="flowGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#FF3D7F"/>
+              <stop offset="52%" stop-color="#FF8A3D"/>
+              <stop offset="100%" stop-color="#0FB89B"/>
+            </linearGradient>
+          </defs>
+          <path class="flow-path" d="M10 260 C 70 260, 90 300, 140 260 S 210 120, 250 150 S 320 40, 360 60 S 420 20, 450 20"/>
+
+          <g class="flow-stop">
+            <circle cx="140" cy="260" r="6" fill="#FF3D7F"/>
+            <text x="150" y="290" class="flow-label">OFFICE HQ</text>
+          </g>
+          <g class="flow-stop">
+            <circle cx="250" cy="150" r="6" fill="#FF8A3D"/>
+            <text x="260" y="140" class="flow-label">GYM FLOOR</text>
+          </g>
+          <g class="flow-stop">
+            <circle cx="360" cy="60" r="6" fill="#0FB89B"/>
+            <text x="325" y="45" class="flow-label">BREAK ROOM</text>
+          </g>
+          <g class="flow-stop">
+            <circle cx="450" cy="20" r="7" fill="#fff"/>
+            <text x="405" y="14" class="flow-label" fill="#fff">YOUR SPOT</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / OWNER -->
+  <section class="about" id="about">
+    <div class="wrap about-grid reveal">
+      <div class="owner-card">
+        <!--
+          This is an original illustrated portrait, not a photo of a real person.
+          To use your own photo instead, delete this <svg>...</svg> block and replace it with:
+          <img class="owner-illustration" src="assets/owner.jpg" alt="Owner of Peak Flow Vending" style="object-fit:cover;">
+          See the README for details.
+        -->
+        <div class="owner-photo">
+          <svg class="owner-illustration" viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated portrait of the owner of Peak Flow Vending">
+            <defs>
+              <radialGradient id="bgGlow" cx="50%" cy="28%" r="82%">
+                <stop offset="0%" stop-color="#F5F2FB"/>
+                <stop offset="100%" stop-color="#E1D9F4"/>
+              </radialGradient>
+              <linearGradient id="collarGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#FF3D7F"/>
+                <stop offset="52%" stop-color="#FF8A3D"/>
+                <stop offset="100%" stop-color="#0FB89B"/>
+              </linearGradient>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FF3D7F"/>
+                <stop offset="100%" stop-color="#0FB89B"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="300" height="375" fill="url(#bgGlow)"/>
+            <circle cx="150" cy="156" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="2" opacity="0.3"/>
+
+            <!-- shoulders / shirt -->
+            <path d="M40 375 C 44 286 84 250 120 240 L180 240 C 216 250 256 286 260 375 Z" fill="#1B1730"/>
+            <path d="M120 240 C 130 258 170 258 180 240 L192 248 C 176 272 124 272 108 248 Z" fill="url(#collarGrad)"/>
+
+            <!-- neck -->
+            <path d="M124 206 L176 206 L176 246 C 160 258 140 258 124 246 Z" fill="#8A5A3B"/>
+            <path d="M124 220 C 140 232 160 232 176 220 L176 230 C 160 240 140 240 124 230 Z" fill="#754A2F" opacity="0.45"/>
+
+            <!-- ears -->
+            <ellipse cx="87" cy="160" rx="9" ry="14" fill="#8A5A3B"/>
+            <ellipse cx="213" cy="160" rx="9" ry="14" fill="#8A5A3B"/>
+            <ellipse cx="89" cy="160" rx="4" ry="8" fill="#6E4529" opacity="0.5"/>
+            <ellipse cx="211" cy="160" rx="4" ry="8" fill="#6E4529" opacity="0.5"/>
+
+            <!-- head -->
+            <path d="M150 88 C 184 88 204 116 202 152 C 200 190 182 224 150 224 C 118 224 100 190 98 152 C 96 116 116 88 150 88 Z" fill="#95653F"/>
+
+            <!-- light stubble along jaw only -->
+            <path d="M108 178 C 116 202 130 216 150 216 C 170 216 184 202 192 178 C 182 198 168 208 150 208 C 132 208 118 198 108 178 Z" fill="#4A3220" opacity="0.4"/>
+
+            <!-- hair: rounded top fading to short sides, natural hairline -->
+            <path d="M96 146 C 92 108 116 80 150 80 C 184 80 208 108 204 146 C 202 130 196 118 196 118 C 196 100 176 92 150 92 C 124 92 104 100 104 118 C 104 118 98 130 96 146 Z" fill="#171018"/>
+            <path d="M96 146 C 94 136 95 126 99 117 C 96 128 96 138 98 148 Z" fill="#171018"/>
+            <path d="M204 146 C 206 136 205 126 201 117 C 204 128 204 138 202 148 Z" fill="#171018"/>
+
+            <!-- eyebrows -->
+            <path d="M116 143 C 122 138 134 138 140 141" fill="none" stroke="#171018" stroke-width="5" stroke-linecap="round"/>
+            <path d="M160 141 C 166 138 178 138 184 143" fill="none" stroke="#171018" stroke-width="5" stroke-linecap="round"/>
+
+            <!-- eyes -->
+            <ellipse cx="128" cy="156" rx="5.5" ry="6" fill="#1B1730"/>
+            <ellipse cx="172" cy="156" rx="5.5" ry="6" fill="#1B1730"/>
+            <circle cx="130" cy="154" r="1.5" fill="#fff"/>
+            <circle cx="174" cy="154" r="1.5" fill="#fff"/>
+
+            <!-- nose -->
+            <path d="M150 160 C 147 170 145 178 150 182 C 155 178 153 170 150 160 Z" fill="#7A5232" opacity="0.6"/>
+
+            <!-- smile -->
+            <path d="M126 190 C 136 202 164 202 174 190" fill="none" stroke="#1B1730" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <div class="owner-caption">
+            <strong>Owner &amp; Operator</strong>
+            <span>Peak Flow Vending LLC</span>
+          </div>
+        </div>
+        <p class="owner-note">Illustrated portrait — swap in a real photo any time (see README).</p>
+      </div>
+      <div class="about-copy">
+        <span class="role">Owner &amp; Operator</span>
+        <h3>Locally owned. Personally run.</h3>
+        <p>Peak Flow Vending LLC is a locally owned and operated vending business, based right here in Ogden, Weber County. When you host a Peak Flow machine, you're working directly with the owner, not a call center three states away.</p>
+        <p>Every machine we place is stocked, cleaned, and maintained on a route run by our own local crew. If something's off, you call the number below and it gets fixed — same day, most days.</p>
+        <div class="about-sign">Peak Flow Vending LLC <span>Ogden, Weber County, UT</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MACHINES -->
+  <section id="machines">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Fleet</span>
+        <h2>Five machines. One flow.</h2>
+        <p>Every machine in the Peak Flow fleet is a full self-serve kiosk — touchscreen ordering, contactless payment, and remote monitoring so we know what's running low before you do.</p>
+      </div>
+
+      <div class="machine-grid">
+        <article class="machine-card reveal">
+          <div class="shot"><img src="assets/machine-icecream.jpg" alt="99 Spoons build-your-own soft serve vending kiosk" loading="lazy"></div>
+          <div class="body">
+            <span class="machine-tag">Soft Serve</span>
+            <h4>Build-Your-Own Soft Serve Kiosk</h4>
+            <p>Touchscreen soft serve with mix-in toppings, ready in seconds. A guaranteed crowd-pleaser wherever people take breaks.</p>
+            <div class="best-for">Best for: gyms, apartment lobbies, schools</div>
+          </div>
+        </article>
+
+        <article class="machine-card reveal">
+          <div class="shot"><img src="assets/machine-whitecastle.jpg" alt="White Castle Crave and Go hot food vending kiosk" loading="lazy"></div>
+          <div class="body">
+            <span class="machine-tag">Hot Food</span>
+            <h4>Crave &amp; Go Hot Food Kiosk</h4>
+            <p>Real hot food, ready in minutes, no cashier required — no tips, no fees, no lines. Ideal for round-the-clock hunger.</p>
+            <div class="best-for">Best for: offices, hospitals, transit hubs</div>
+          </div>
+        </article>
+
+        <article class="machine-card reveal">
+          <div class="shot"><img src="assets/machine-fridge.jpg" alt="24 hour smart refrigerated grab and go vending fridge" loading="lazy"></div>
+          <div class="body">
+            <span class="machine-tag">Grab &amp; Go</span>
+            <h4>24H Smart Cooler</h4>
+            <p>Tap in, grab drinks or snacks, and walk out — checkout happens automatically. Always cold, always stocked.</p>
+            <div class="best-for">Best for: warehouses, break rooms, dorms</div>
+          </div>
+        </article>
+
+        <article class="machine-card reveal">
+          <div class="shot"><img src="assets/machine-fries.jpg" alt="Fresh french fry vending machine" loading="lazy"></div>
+          <div class="body">
+            <span class="machine-tag">Fresh Fried</span>
+            <h4>3-Minute Fresh Fries</h4>
+            <p>Real potatoes, cooked fresh on demand in about three minutes flat — a snack machine that actually smells like food.</p>
+            <div class="best-for">Best for: malls, cinemas, entertainment venues</div>
+          </div>
+        </article>
+
+        <article class="machine-card reveal">
+          <div class="shot"><img src="assets/machine-pizza.jpg" alt="Automated fresh pizza vending machine" loading="lazy"></div>
+          <div class="body">
+            <span class="machine-tag">Fresh Baked</span>
+            <h4>Hot &amp; Fresh Pizza Kiosk</h4>
+            <p>A full pizza, made and baked fresh to order in about three minutes — no delivery fee, no waiting on a driver.</p>
+            <div class="best-for">Best for: schools, dorms, event venues</div>
+          </div>
+        </article>
+
+        <article class="machine-card reveal">
+          <div class="body" style="justify-content:center; align-items:flex-start; padding:34px 26px;">
+            <span class="machine-tag" style="color:var(--pink);">Custom Fit</span>
+            <h4>Not seeing your need?</h4>
+            <p>We add machines to the fleet based on what locations actually ask for. Tell us your space and foot traffic, and we'll recommend the right fit.</p>
+            <a class="btn btn-ghost" href="#contact" style="margin-top:6px;">Talk it through</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS / WHO BENEFITS -->
+  <section class="locations" id="locations">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow on-dark">Who We Serve</span>
+        <h2 style="color:#fff;">If people gather there, a Peak Flow machine belongs there.</h2>
+        <p style="color:#BDB6DA;">Free placement, free machine, free service — you just provide the floor space and the foot traffic. Here's where our machines do the most work.</p>
+      </div>
+
+      <div class="loc-grid reveal">
+        <div class="loc-item"><span class="ic">🏢</span><h5>Office Buildings &amp; Coworking</h5><p>Keep teams fed and caffeinated without a coffee run.</p></div>
+        <div class="loc-item"><span class="ic">🏋️</span><h5>Gyms &amp; Fitness Studios</h5><p>Protein, hydration, and post-workout treats on the spot.</p></div>
+        <div class="loc-item"><span class="ic">🏘️</span><h5>Apartment &amp; Condo Complexes</h5><p>An amenity residents actually notice, at zero cost to the property.</p></div>
+        <div class="loc-item"><span class="ic">🎓</span><h5>Schools, Colleges &amp; Dorms</h5><p>Approved snacks and food between classes, day or night.</p></div>
+        <div class="loc-item"><span class="ic">🏥</span><h5>Hospitals &amp; Medical Offices</h5><p>Reliable food for staff and visitors on round-the-clock schedules.</p></div>
+        <div class="loc-item"><span class="ic">🏭</span><h5>Warehouses &amp; Manufacturing</h5><p>Break-room options that keep shifts running without a drive off-site.</p></div>
+        <div class="loc-item"><span class="ic">🛎️</span><h5>Hotels &amp; Motels</h5><p>A late-night option for guests without staffing a 24-hour kitchen.</p></div>
+        <div class="loc-item"><span class="ic">🚗</span><h5>Auto Shops &amp; Dealerships</h5><p>Something for customers to do while the wait ticks by.</p></div>
+        <div class="loc-item"><span class="ic">🎬</span><h5>Entertainment &amp; Event Venues</h5><p>High foot-traffic spots where fast food beats a concession line.</p></div>
+        <div class="loc-item"><span class="ic">🧺</span><h5>Laundromats</h5><p>Turn dead wait time into a snack break.</p></div>
+        <div class="loc-item"><span class="ic">💈</span><h5>Salons &amp; Barbershops</h5><p>A small perk for clients settling in for a longer visit.</p></div>
+        <div class="loc-item"><span class="ic">🙏</span><h5>Churches &amp; Community Centers</h5><p>Refreshments ready for events without volunteer setup.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Process</span>
+        <h2>From first call to first sale, here's the route.</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <span class="num">01</span>
+          <h4>Free site visit</h4>
+          <p>We walk your space, check power and traffic, and recommend the right machine — no charge, no pressure.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h4>We install &amp; stock</h4>
+          <p>Delivery, setup, and a custom product mix chosen for your crowd, handled entirely by our crew.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h4>We run the route</h4>
+          <p>Restocking, cleaning, and repairs on a set schedule — plus a direct line to the owner if anything needs attention.</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <h4>You collect the upside</h4>
+          <p>A happier space and, on qualifying placements, a monthly commission — with zero labor from your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Let's Talk Placement</span>
+        <h2>Get a free machine at your location.</h2>
+        <p class="lede">Reach out directly — you'll hear back from the person who actually runs the route, not a script.</p>
+
+        <div class="contact-cards">
+          <div class="ccard">
+            <span class="ic">✆</span>
+            <div><strong>Call or text</strong><span>(773) 677-0284</span></div>
+          </div>
+          <div class="ccard">
+            <span class="ic">✉</span>
+            <div><strong>Email</strong><span>support@peakflow.com</span></div>
+          </div>
+          <div class="ccard">
+            <span class="ic">◎</span>
+            <div><strong>Service area</strong><span>Ogden, Weber County, UT</span></div>
+          </div>
+        </div>
+      </div>
+
+      <form action="mailto:support@peakflow.com" method="POST" enctype="text/plain" class="reveal">
+        <h3>Request a machine</h3>
+        <p>Fill this out and it opens directly in your email app, addressed to us.</p>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="Name" type="text" placeholder="Jordan Lee" required>
+        </div>
+        <div class="field">
+          <label for="business">Business / location name</label>
+          <input id="business" name="Business" type="text" placeholder="Lakeside Fitness">
+        </div>
+        <div class="field">
+          <label for="type">Location type</label>
+          <select id="type" name="Location Type">
+            <option>Office / Coworking</option>
+            <option>Gym / Fitness Studio</option>
+            <option>Apartment / Condo Complex</option>
+            <option>School / College</option>
+            <option>Hospital / Medical</option>
+            <option>Warehouse / Manufacturing</option>
+            <option>Hotel / Motel</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="phone">Phone or email</label>
+          <input id="phone" name="Contact" type="text" placeholder="How should we reach you?" required>
+        </div>
+        <div class="field">
+          <label for="msg">Tell us about the space</label>
+          <textarea id="msg" name="Message" placeholder="Foot traffic, hours, machine type you're interested in..."></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Send Request</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <svg class="foot-range" viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path fill="#241F3D" d="M0 70 L0 45 L140 15 L260 42 L380 10 L520 40 L660 18 L800 44 L940 20 L1080 42 L1220 12 L1440 40 L1440 70 Z"/>
+  </svg>
+  <div class="wrap foot-inner">
+    <div class="foot-grid">
+      <a href="#top" class="logo">
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 17L9 9L13 14L21 4" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span style="color:#fff;">PEAK FLOW<small>VENDING&nbsp;LLC</small></span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="#machines">Machines</a></li>
+        <li><a href="#locations">Who We Serve</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="tel:+17736770284">(773) 677-0284</a></li>
+        <li><a href="mailto:support@peakflow.com">support@peakflow.com</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Peak Flow Vending LLC. Locally owned &amp; operated in Ogden, Weber County, UT.</span>
+      <span>Built to keep your space moving.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
